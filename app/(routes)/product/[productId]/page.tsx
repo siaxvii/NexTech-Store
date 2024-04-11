@@ -21,9 +21,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
     categoryId: product?.category?.id
   });
 
-  if (!product) {
-    return null;
-  }
+  if (!product) { return null; }
 
   return (
     <div className="bg-white">
