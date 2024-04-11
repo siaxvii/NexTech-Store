@@ -6,6 +6,8 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import ModalProvider from "@/providers/modal-provider"
 import Modal from "@/components/ui/modal";
+import { ClerkProvider } from "@clerk/nextjs";
+import ToastProvider from "@/providers/toast-provider"
 
 const font = Urbanist({ subsets: ["latin"] });
 
@@ -20,13 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <ModalProvider />
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={font.className}>
+          <ToastProvider />
+          <ModalProvider />
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
