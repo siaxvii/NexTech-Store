@@ -5,6 +5,7 @@ import Container from "@/components/ui/container";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./navbar-actions";
 import { UserButton } from "@clerk/nextjs";
+import SearchBar from "@/components/search-bar";
 
 export const revalidate = 0;
 
@@ -19,6 +20,7 @@ const Navbar = async () => {
             <p className="font-bold text-xl">NexTech</p>
           </Link>
           <MainNav data={categories} />
+          <SearchBar />
           <div className="ml-auto flex items-center space-x-5 pr-1">
             <NavbarActions />
             <UserButton afterSignOutUrl="/" />
