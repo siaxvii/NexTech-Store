@@ -18,6 +18,28 @@ const CartItem:React.FC<CartItemProps> = ({
 }) => {
 const cart = useCart();
 
+// Calculate discounted price if product is discounted
+const renderPrice = () => {
+  if (data.isDiscounted && data.discountPercentage) {
+
+    const discountedPrice = data.price * (1 - data.discountPercentage / 100);
+    return (
+      <>
+      <span>
+        <span className="line-through text-gray-500">
+          <Currency value={data.price} />
+        </span>
+        <span>
+          <Currency value={discountedPrice} />
+        </span>
+      </span>
+    </>
+    );
+  } else {
+    return <Currency value={data.price} />;
+  }
+};
+
 const onRemove = () => {
   cart.removeItem(data.id);
 }
@@ -42,7 +64,7 @@ const onRemove = () => {
           <div className="mt-1 flex text-sm">
             <p className="text-gray-500">{data.color.name}</p>
           </div>
-          <Currency value={data.price}/>
+          {renderPrice()}
         </div>
       </div>
     </li>

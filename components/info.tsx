@@ -18,12 +18,36 @@ const Info: React.FC<InfoProps> = ({ data }) => {
     cart.addItem(data);
   }
 
+  const renderPrice = () => {
+    if (data.isDiscounted && data.discountPercentage) {
+      const discountedPrice = data.price * (1 - data.discountPercentage / 100);
+      return (
+        <div className="items-center">
+          <span className="p-4 bg-green-600 text-white px-2 py-1 rounded-md mr-2">
+            {data.discountPercentage}% off
+          </span>
+          <div className="flex items-center">
+            <span className="font-semibold pt-2 line-through text-gray-500 mr-2">
+              <Currency value={data.price} />
+            </span>
+            <span className="pt-2">
+              <Currency value={discountedPrice} />
+            </span>
+          </div>
+        </div>
+      );
+    } else {
+      return <Currency value={data.price} />;
+    }
+  };
+  
+
   return ( 
     <div>
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
       <div className="mt-3 flex items-end justify-between">
         <p className="text-2xl text-gray-900">
-          <Currency value={data?.price} />
+          {renderPrice()}
         </p>
       </div>
       <hr className="my-4" />

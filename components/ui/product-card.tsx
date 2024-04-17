@@ -37,6 +37,32 @@ const ProductCard: React.FC<ProductCard> = ({
 
     cart.addItem(data);
   };
+
+  const renderPrice = () => {
+    if (data.isDiscounted && data.discountPercentage) {
+
+      const discountedPrice = data.price * (1 - data.discountPercentage / 100);
+      return (
+        <>
+        <div className="flex items-center">
+          <span className="bg-green-600 text-white px-2 py-1 rounded-md">
+            {data.discountPercentage}% off
+          </span>
+          <span className="pl-2 line-through text-gray-500">
+            <Currency value={data.price} />
+          </span>
+          
+        </div>
+          <span className="ml-1">
+            <Currency value={discountedPrice} />
+          </span>
+        
+      </>
+      );
+    } else {
+      return <Currency value={data.price} />;
+    }
+  };
   
   return ( 
     <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border-2 p-3 space-y-4">
@@ -68,7 +94,7 @@ const ProductCard: React.FC<ProductCard> = ({
       </div>
       {/* Price & Review */}
       <div className="flex items-center justify-between">
-        <Currency value={data?.price} />
+        {renderPrice()}
       </div>
     </div>
   );
