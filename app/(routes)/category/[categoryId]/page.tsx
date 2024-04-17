@@ -1,4 +1,3 @@
-
 import Container from '@/components/ui/container';
 import Billboard from '@/components/ui/billboard';
 import ProductCard from '@/components/ui/product-card';
@@ -10,6 +9,7 @@ import getColors from '@/actions/get-colors';
 
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
+import Sort from './components/sort';
 
 export const revalidate = 0;
 
@@ -19,6 +19,7 @@ interface CategoryPageProps {
   },
   searchParams: {
     colorId: string;
+    sortBy: 'asc' | 'desc';
   }
 }
 
@@ -29,9 +30,11 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const products = await getProducts({ 
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
+    sortBy: searchParams.sortBy,
   });
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
+
 
   return (
     <div className="bg-white">
@@ -48,6 +51,15 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                 name="Colors" 
                 data={colors}
               />
+              <h3 className="text-lg font-semibold"> Prices </h3>
+              <hr className="my-4" />
+              <Sort
+                sortByOptions={[
+                  { label: 'Lowest to Highest', value: 'asc' },
+                  { label: 'Highest to Lowest', value: 'desc' },
+                ]}
+              />
+              
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}

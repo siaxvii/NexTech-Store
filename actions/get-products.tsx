@@ -8,18 +8,34 @@ interface Query {
   colorId?: string;
   isFeatured?: boolean;
   description?: string;
+  price?: string;
+  sortBy?: 'asc' | 'desc';
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
-  const url = qs.stringifyUrl({
-    url: URL,
-    query: { 
+    let url: string = URL;
+    let queryString: any = { 
       colorId: query.colorId,
       categoryId: query.categoryId,
       isFeatured: query.isFeatured,
-    },
-  });
+      description: query.description,
+      sortBy: query.sortBy,
+    };
+  
 
+    if (query.price && query.sortBy) {
+      queryString = {
+        ...queryString,
+        _sort: 'price', // Specify the field to sort by
+        _order: query.sortBy, // Specify the order of sorting
+      };
+    }
+
+    url = qs.stringifyUrl({
+      url,
+      query: queryString,
+    });
+  
   const res = await fetch(url);
 
   return res.json();
