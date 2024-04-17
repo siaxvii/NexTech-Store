@@ -10,6 +10,9 @@ import { redirect } from "next/navigation";
 export const revalidate = 0;
 
 const HomePage = async () => {
+  const { userId } = auth();
+  if (!userId){ redirect('/sign-in')}
+  
   const products = await getProducts({ isFeatured: true });
   const billboard = await getBillboard("0cd12195-c351-4513-8728-856638f389ad");
 
