@@ -46,11 +46,6 @@ const SearchPage: React.FC<SearchPageProps> = async ({
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters colors={colors} />
             <div className="pt-10 hidden lg:block">
-              <Filter 
-                valueKey="colorId" 
-                name="Colors" 
-                data={colors}
-              />
               <h3 className="text-lg font-semibold"> Prices </h3>
               <hr className="my-4" />
               <Sort
@@ -59,13 +54,19 @@ const SearchPage: React.FC<SearchPageProps> = async ({
                   { label: 'Highest to Lowest', value: 'desc' },
                 ]}
               />
-              
+              <div className="pt-10">
+                <Filter 
+                  valueKey="colorId" 
+                  name="Colors" 
+                  data={colors}
+                />
+              </div>
             </div>
+            
             <div className="mt-6 lg:col-span-4 lg:mt-0">
-
-            <h3 className="font-semibold text-3xl my-10"> 
-              {products.length === 1 ? `${products.length} search result` : `${products.length} search results`} for &quot;{decodedQuery}&quot;
-            </h3>
+              <h3 className="font-semibold text-3xl my-10"> 
+                {products.length === 1 ? `${products.length} search result` : `${products.length} search results`} for &quot;{decodedQuery}&quot;
+              </h3>
               {!products || products.length === 0 && <NoResults />}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {products?.map((product:Product) => (

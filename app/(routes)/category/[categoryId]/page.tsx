@@ -44,13 +44,8 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
         />
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters colors={colors} />
+          <MobileFilters colors={colors} />
             <div className="hidden lg:block">
-              <Filter 
-                valueKey="colorId" 
-                name="Colors" 
-                data={colors}
-              />
               <h3 className="text-lg font-semibold"> Prices </h3>
               <hr className="my-4" />
               <Sort
@@ -59,7 +54,13 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                   { label: 'Highest to Lowest', value: 'desc' },
                 ]}
               />
-              
+              <div className="pt-10">
+                <Filter 
+                  valueKey="colorId" 
+                  name="Colors" 
+                  data={colors}
+                />
+              </div>
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {products.length === 0 && <NoResults />}
