@@ -10,6 +10,7 @@ interface Query {
   description?: string;
   price?: string;
   sortBy?: 'asc' | 'desc';
+  search?: string;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -20,6 +21,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       isFeatured: query.isFeatured,
       description: query.description,
       sortBy: query.sortBy,
+      search: query.search,
     };
   
 
