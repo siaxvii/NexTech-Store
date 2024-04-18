@@ -64,7 +64,7 @@ const SearchPage: React.FC<SearchPageProps> = async ({
             <div className="mt-6 lg:col-span-4 lg:mt-0">
 
             <h3 className="font-semibold text-3xl my-10"> 
-              {products.length === 1 ? `${products.length} search result` : `${products.length} search results`} for "{decodedQuery}"
+              {products.length === 1 ? `${products.length} search result` : `${products.length} search results`} for `&quot;`{decodedQuery}`&quot;`
             </h3>
               {!products || products.length === 0 && <NoResults />}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
