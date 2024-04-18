@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
 
-
 const CartPage = () => {
   const cart = useCart();
   const [isMounted, setIsMounted] = useState(false);
@@ -18,6 +17,7 @@ const CartPage = () => {
   if (!isMounted) { return null; }
 
   return ( 
+    
     <div className="bg-white">
       <Container>
         <div className="px-4 py-16 sm:px-6 lg:px-8">
