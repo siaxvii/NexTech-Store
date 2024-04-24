@@ -26,6 +26,19 @@ const Summary = () => {
 
   }, [searchParams, removeAll])
 
+  const subtotal = cart.items.reduce((total, item) => {
+    return total + (+item.price);
+  }, 0);
+
+  const totalSaved = cart.items.reduce((total, item) => {
+    if (item.isDiscounted) {
+      const originalPrice = +item.price;
+      const discountedPrice = originalPrice - (originalPrice * (+item.discountPercentage / 100));
+      const savedAmount = originalPrice - discountedPrice;
+      return total + savedAmount;
+    }
+    return total;
+  }, 0);
 
   const modifiedItems = cart.items.map((item) => {
     const discountedPrice = item.isDiscounted
@@ -58,9 +71,26 @@ const Summary = () => {
         <div className="mt-6 space-y-4">
           <div className="flex items-center justify-between border-t border-gray-200 pt-4">
             <div className="text-base font-medium text-gray-900">
+              Subtotal
+            </div>
+            <Currency value={subtotal}/>
+          </div>
+          <div className="flex justify-between items-center pt-4">
+            <div className="text-base font-medium text-gray-900">
+              You Saved
+            </div>
+            <div className="flex font-bold items-center">
+              <span className="mr-1">-</span><Currency value={totalSaved}/>
+            </div>
+          </div>
+          <div className="flex items-center justify-between border-t border-gray-200 pt-10">
+            <div className="text-xl font-bold text-gray-900">
               Order Total
             </div>
-            <Currency value={totalPrice}/>
+            <div className="text-xl font-bold text-gray-900">
+              <Currency value={totalPrice}/>
+            </div>
+            
           </div>
         </div>
         <Button disabled={modifiedItems.length === 0} onClick={onCheckout} className="w-full mt-6">
