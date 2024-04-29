@@ -10,6 +10,7 @@ import { Product } from "@/types";
 import Button from "@/components/ui/button";
 import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
+import toast from "react-hot-toast";
 
 interface WishListItemProps {
   data: Product;
@@ -53,6 +54,8 @@ const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
 
     cart.addItem(data);
     wishlist.removeItem(data.id);
+    toast.dismiss();
+    return toast.success('Item moved to cart!');
 };
 
   return (

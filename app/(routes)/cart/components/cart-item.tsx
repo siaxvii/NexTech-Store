@@ -49,6 +49,8 @@ const onSaveToWishlist: MouseEventHandler<HTMLButtonElement> = (event) => {
 
   wishlist.addItem(data);
   cart.removeItem(data.id);
+  toast.dismiss();
+  return toast.success('Item moved to wishlist!');
 };
 
 const onRemove = () => {
