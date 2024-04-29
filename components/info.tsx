@@ -1,11 +1,13 @@
 "use client";
 
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 
 import Currency  from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { Product } from "@/types";
 import useCart from "@/hooks/use-cart";
+import { MouseEventHandler } from "react";
+import useWishlist from "@/hooks/use-wishlist";
 
 interface InfoProps {
   data: Product
@@ -13,6 +15,7 @@ interface InfoProps {
 
 const Info: React.FC<InfoProps> = ({ data }) => {
   const cart = useCart();
+  const wishlist = useWishlist();
 
   const onAddToCart = () => {
     cart.addItem(data);
@@ -41,6 +44,11 @@ const Info: React.FC<InfoProps> = ({ data }) => {
     }
   };
   
+  const onSaveToWishlist: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+  
+    wishlist.addItem(data);
+  };
 
   return ( 
     <div>
@@ -65,6 +73,10 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         <Button onClick={onAddToCart} className="flex items-center gap-x-2">
           Add To Cart
           <ShoppingCart size={20} />
+        </Button>
+        <Button onClick={(onSaveToWishlist)} className="flex items-center gap-x-2">
+          Add to Wishlist
+          <Heart size={20} />
         </Button>
       </div>
     </div>

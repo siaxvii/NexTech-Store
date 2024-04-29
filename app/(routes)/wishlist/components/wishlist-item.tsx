@@ -1,24 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { toast } from "react-hot-toast";
-import { Heart, X } from "lucide-react";
+import { Heart, ShoppingCart, X } from "lucide-react";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
-import useCart from "@/hooks/use-cart";
+import useWishList from "@/hooks/use-wishlist";
 import { Product } from "@/types";
 import Button from "@/components/ui/button";
 import { MouseEventHandler } from "react";
-import useWishList from "@/hooks/use-wishlist";
+import useCart from "@/hooks/use-cart";
 
-interface CartItemProps {
+interface WishListItemProps {
   data: Product;
 }
 
-const CartItem:React.FC<CartItemProps> = ({
+const WishListItem:React.FC<WishListItemProps> = ({
   data
 }) => {
+
+const wishlist = useWishList();
 const cart = useCart();
 
 // Calculate discounted price if product is discounted
@@ -43,17 +44,17 @@ const renderPrice = () => {
   }
 };
 
-const wishlist = useWishList();
-const onSaveToWishlist: MouseEventHandler<HTMLButtonElement> = (event) => {
-  event.stopPropagation();
+const onRemove = () => {
+  wishlist.removeItem(data.id);
+}
 
-  wishlist.addItem(data);
-  cart.removeItem(data.id);
+const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+
+    cart.addItem(data);
+    wishlist.removeItem(data.id);
 };
 
-const onRemove = () => {
-  cart.removeItem(data.id);
-}
   return (
     <li className="flex py-6 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-48 sm:w-48">
@@ -78,13 +79,13 @@ const onRemove = () => {
           {renderPrice()}
         </div>
         <div>
-          <Button onClick={(onSaveToWishlist)} className="flex items-center bg-gray-100 border-black-50 px-4 py-2">
-            <Heart
+          <Button onClick={(onAddToCart)} className="flex items-center bg-gray-100 border-black-50 px-4 py-2">
+            <ShoppingCart
               size={20}
               color="black"
             />
             <span className="ml-2 text-sm font-medium text-black pl-1">
-              Move to Wishlist
+              Move to Cart
             </span>
           </Button>
         </div>
@@ -93,4 +94,4 @@ const onRemove = () => {
   );
 }
  
-export default CartItem;
+export default WishListItem;
