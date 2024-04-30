@@ -5,8 +5,11 @@ import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 import CartItem from "./components/cart-item";
 import Summary from "./components/summary";
+import { auth } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export const revalidate = 0;
+
 
 const CartPage = () => {
   const cart = useCart();

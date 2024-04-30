@@ -1,7 +1,7 @@
 "use client";
-
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import axios from "axios";
-import { useEffect } from "react";  
+import { MouseEventHandler, useEffect } from "react";  
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -10,6 +10,8 @@ import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 
 const Summary = () => {
+
+
   const searchParams = useSearchParams();
   const cart = useCart();
   const removeAll = useCart((state) => state.removeAll);
@@ -61,6 +63,9 @@ const Summary = () => {
     window.location = response.data.url;
   }
 
+  const openToast: MouseEventHandler<HTMLButtonElement> = (event) => {
+    toast.error("Please sign in to checkout!");
+  };
 
   return ( 
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
@@ -93,9 +98,16 @@ const Summary = () => {
             
           </div>
         </div>
-        <Button disabled={modifiedItems.length === 0} onClick={onCheckout} className="w-full mt-6">
-          Checkout
-        </Button>
+        <SignedIn>
+          <Button disabled={modifiedItems.length === 0} onClick={onCheckout} className="w-full mt-6">
+            Checkout
+          </Button>
+        </SignedIn>
+        <SignedOut>
+          <Button disabled={modifiedItems.length === 0} onClick={openToast} className="w-full mt-6">
+            Checkout
+          </Button>
+        </SignedOut>
     </div>
    );
 }

@@ -4,8 +4,10 @@ import MainNav from "@/components/main-nav";
 import Container from "@/components/ui/container";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./navbar-actions";
-import { UserButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 import SearchBar from "@/components/search-bar";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Circle, CircleUserRound, LogIn } from "lucide-react";
 
 export const revalidate = 0;
 
@@ -22,8 +24,18 @@ const Navbar = async () => {
           <MainNav data={categories} />
           <SearchBar />
           <div className="ml-auto flex items-center space-x-5 pr-1">
-            <NavbarActions />
-            <UserButton afterSignOutUrl="/" />
+            <SignedIn>
+              <NavbarActions />
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              <NavbarActions />
+              <div className="flex items-center rounded-full bg-black px-4 py-2 text-white font-medium text-sm cursor-pointer hover:opacity-75">
+                <SignInButton afterSignInUrl="/"> 
+                  <CircleUserRound/>
+                </SignInButton>
+              </div>
+            </SignedOut>
           </div>
         </div>
       </Container>
