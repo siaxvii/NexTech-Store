@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import WishListItem from "./components/wishlist-item";
 import useWishList from "@/hooks/use-wishlist";
 
+export const revalidate = 0;
+
 const WishList = () => {
   const wishlist = useWishList();
   const [isMounted, setIsMounted] = useState(false);
