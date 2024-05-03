@@ -37,7 +37,7 @@ const Navbar = async () => {
                 <SignInButton>
                   <button className="flex items-center">
                     <CircleUserRound />
-                    <h1 className="ml-3 font-bold">Sign In</h1>
+                    <h1 className="ml-3 font-bold hidden sm:block whitespace-nowrap">Sign In</h1>
                   </button>
                 </SignInButton>
               </div>

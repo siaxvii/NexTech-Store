@@ -26,7 +26,7 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <nav
-      className="mx-9 flex items-center space-x-2 lg:space-x-6"
+      className="mx-9 flex items-center space-x-2 lg:space-x-6 whitespace-nowrap"
     >
       {routes.map((route) => (
         <Link
