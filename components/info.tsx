@@ -1,29 +1,79 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { Heart, ShoppingCart } from "lucide-react";
-
-import Currency  from "@/components/ui/currency";
-import Button from "@/components/ui/button";
+import Currency from "@/components/ui/currency";
+import Button from "@/components/ui/o_button";
 import { Product } from "@/types";
 import useCart from "@/hooks/use-cart";
 import { MouseEventHandler } from "react";
 import useWishlist from "@/hooks/use-wishlist";
 
-interface InfoProps {
-  data: Product
-};
+interface InfoProps { data: Product; ignoreTheme?: boolean}
 
-const Info: React.FC<InfoProps> = ({ data }) => {
+const Info: React.FC<InfoProps> = ({ data, ignoreTheme }) => {
   const cart = useCart();
   const wishlist = useWishlist();
+  const { theme } = useTheme();
+  const [textColor, setTextColor] = useState<string>("text-black");
 
-  const onAddToCart = () => {
-    cart.addItem(data);
-  }
+  useEffect(() => {
+    if(!ignoreTheme){
+      setTextColor(theme === "light" ? "text-black" : "text-white");
+    }
+  }, [theme, ignoreTheme]);
 
-  const renderPrice = () => {
+  const onAddToCart = () => { cart.addItem(data); };
+
+  const onSaveToWishlist: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    wishlist.addItem(data);
+  };
+
+  return (
+    <div>
+      <h1 className={`text-3xl font-bold ${textColor}`}>{data.name}</h1>
+      <div className="mt-3 flex items-end justify-between">
+        <div className={`text-2xl ${textColor}`}>{renderPrice()}</div>
+      </div>
+      <hr className="my-4" />
+      <div className="flex flex-col gap-y-6">
+        <div className="flex items-center gap-x-4">
+          <h3 className={`font-semibold ${textColor}`}>Color:</h3>
+          <div
+            className="h-6 w-6 rounded-full border border-gray-600"
+            style={{ backgroundColor: data?.color?.value }}
+          />
+        </div>
+        <div className="flex items-start gap-x-4">
+          <h3 className={`font-semibold ${textColor}`}>Description:</h3>
+          <h3 className={textColor}>{data.description}</h3>
+        </div>
+      </div>
+      <div className="mt-10 flex items-center gap-x-3">
+        <Button
+          onClick={onAddToCart}
+          className={`flex items-center gap-x-2 border-white text-white hover:bg-accent hover:text-accent-foreground`}
+        >
+          Add To Cart
+          <ShoppingCart size={20} />
+        </Button>
+        <Button
+          onClick={onSaveToWishlist}
+          className={`flex items-center gap-x-2 border-white text-white hover:bg-accent hover:text-accent-foreground`}
+        >
+          Add to Wishlist
+          <Heart size={20} />
+        </Button>
+      </div>
+    </div>
+  );
+
+  function renderPrice() {
     if (data.isDiscounted && data.discountPercentage) {
-      const discountedPrice = data.price * (1 - data.discountPercentage / 100);
+      const discountedPrice =
+        data.price * (1 - data.discountPercentage / 100);
       return (
         <div className="items-center">
           <span className="p-4 bg-green-600 text-white px-2 py-1 rounded-md mr-2">
@@ -42,45 +92,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
     } else {
       return <Currency value={data.price} />;
     }
-  };
-  
-  const onSaveToWishlist: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-  
-    wishlist.addItem(data);
-  };
+  }
+};
 
-  return ( 
-    <div>
-      <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl text-gray-900">
-          {renderPrice()}
-        </p>
-      </div>
-      <hr className="my-4" />
-      <div className="flex flex-col gap-y-6">
-        <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold text-black">Color:</h3>
-          <div className="h-6 w-6 rounded-full border border-gray-600" style={{ backgroundColor: data?.color?.value }} />
-        </div>
-        <div className="flex items-start gap-x-4">
-          <h3 className="font-semibold text-black">Description:</h3>
-          <h3 className="text-black">{data.description}</h3>
-        </div>
-      </div>
-      <div className="mt-10 flex items-center gap-x-3">
-        <Button onClick={onAddToCart} className="flex items-center gap-x-2">
-          Add To Cart
-          <ShoppingCart size={20} />
-        </Button>
-        <Button onClick={(onSaveToWishlist)} className="flex items-center gap-x-2">
-          Add to Wishlist
-          <Heart size={20} />
-        </Button>
-      </div>
-    </div>
-  );
-}
- 
 export default Info;

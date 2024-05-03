@@ -40,13 +40,12 @@ const SearchPage: React.FC<SearchPageProps> = async ({
 
 
   return (
-    <div className="bg-white">
       <Container>
         <div className="px-4 sm:px-6 lg:px-8 pb-24 pt-10">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters colors={colors} />
             <div className="pt-10 hidden lg:block">
-              <h3 className="text-lg font-semibold"> Prices </h3>
+              <h3 className="text-lg font-semibold"> Sort Price </h3>
               <hr className="my-4" />
               <Sort
                 sortByOptions={[
@@ -77,7 +76,6 @@ const SearchPage: React.FC<SearchPageProps> = async ({
           </div>
         </div>
       </Container>
-    </div>
   );
 };
 

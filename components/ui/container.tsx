@@ -1,6 +1,3 @@
-import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-
 interface ContainerProps{
     children: React.ReactNode
 }

@@ -5,7 +5,7 @@ import { MouseEventHandler, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { toast } from "react-hot-toast";
 
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/o_button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 
@@ -78,13 +78,15 @@ const Summary = () => {
             <div className="text-base font-medium text-gray-900">
               Subtotal
             </div>
-            <Currency value={subtotal}/>
+            <div className="text-black"> 
+              <Currency value={subtotal}/>
+            </div>
           </div>
           <div className="flex justify-between items-center pt-4">
             <div className="text-base font-medium text-gray-900">
               You Saved
             </div>
-            <div className="flex font-bold items-center">
+            <div className="flex font-bold items-center text-black">
               <span className="mr-1">-</span><Currency value={totalSaved}/>
             </div>
           </div>

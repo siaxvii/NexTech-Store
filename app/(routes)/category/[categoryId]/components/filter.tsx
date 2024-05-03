@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/o_button";
 import { cn } from "@/lib/utils";
 import { Color } from "@/types";
 
@@ -56,7 +56,7 @@ return (
             <Button
               className={cn(
                 'rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
-                selectedValue === filter.id && 'bg-black text-white'
+                selectedValue === filter.id
               )}
               onClick={() => onClick(filter.id)}
             >
