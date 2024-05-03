@@ -34,11 +34,11 @@ const Navbar = async () => {
               <NavbarActions />
               <ModeToggle/>
               <div className="rounded-full bg-black border px-4 py-2 text-white font-medium text-medium cursor-pointer hover:opacity-75">
-                <SignInButton afterSignInUrl="/">
-                  <div className="flex items-center">
+                <SignInButton>
+                  <button className="flex items-center">
                     <CircleUserRound />
                     <h1 className="ml-3 font-bold">Sign In</h1>
-                  </div>
+                  </button>
                 </SignInButton>
               </div>
             </SignedOut>

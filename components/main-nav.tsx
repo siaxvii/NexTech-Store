@@ -39,7 +39,7 @@ const MainNav: React.FC<MainNavProps> = ({
         >
           <div className="relative"> {/* Wrap in a div to position the line */}
             {route.label}
-            {/* Add border bottom when active */}
+            
             {route.active && (
               <div
                 className={cn(
