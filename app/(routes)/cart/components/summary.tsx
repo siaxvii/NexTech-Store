@@ -70,11 +70,11 @@ const Summary = () => {
   return ( 
     <div className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
 
-      <h2 className="text-lg font-medium text-gray-900">
+      <h2 className="text-lg font-medium text-gray-900" tabIndex={0}>
         Order Summary
         </h2>
         <div className="mt-6 space-y-4">
-          <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+          <div className="flex items-center justify-between border-t border-gray-200 pt-4" tabIndex={0}>
             <div className="text-base font-medium text-gray-900">
               Subtotal
             </div>
@@ -82,7 +82,7 @@ const Summary = () => {
               <Currency value={subtotal}/>
             </div>
           </div>
-          <div className="flex justify-between items-center pt-4">
+          <div className="flex justify-between items-center pt-4" tabIndex={0}  >
             <div className="text-base font-medium text-gray-900">
               You Saved
             </div>
@@ -90,7 +90,7 @@ const Summary = () => {
               <span className="mr-1">-</span><Currency value={totalSaved}/>
             </div>
           </div>
-          <div className="flex items-center justify-between border-t border-gray-200 pt-10">
+          <div className="flex items-center justify-between border-t border-gray-200 pt-10" tabIndex={0}>
             <div className="text-xl font-bold text-gray-900">
               Order Total
             </div>

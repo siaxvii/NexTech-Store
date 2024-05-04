@@ -12,12 +12,12 @@ const HomePage = async () => {
   return (
     <Container>
       <div className="space-y-10 pb-10">
-        <div className="rounded-xl md:aspect overflow-hidden text-black bg-cover"> <Billboard data={billboard} /> </div>
-        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <DiscountProducts title="Discounted Products" items={products} />
+        <div className="rounded-xl md:aspect overflow-hidden text-black bg-cover"> <Billboard data={billboard} aria-label="Welcome to NexTech!"/> </div>
+        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8" aria-label="Discounted Products">
+          <DiscountProducts title="Discounted Products" items={products}/>
           <hr className="my-4" />
         </div>
-        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8" aria-label="Featured Products" tabIndex={0}>
           <ProductList title="Featured Products" items={products} />
         </div>
       </div>

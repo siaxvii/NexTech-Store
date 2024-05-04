@@ -13,10 +13,10 @@ const Reviews: React.FC = () => {
 
   return (
     <div className="mt-10">
-      <h3 className="font-bold text-3xl pb-8">Customer Reviews</h3>
+      <h3 className="font-bold text-3xl pb-8" tabIndex={0}>Customer Reviews</h3>
       <div className="space-y-4">
         {reviews.map((review) => (
-          <div key={review.id} className="border border-gray-200 rounded p-4">
+          <div key={review.id} className="border border-gray-200 rounded p-4" tabIndex={0}>
             <div className="flex items-center justify-between mb-2">
               <span className="font-semibold">{review.author}</span>
               <div className="flex">
@@ -30,6 +30,7 @@ const Reviews: React.FC = () => {
               </div>
             </div>
             <span className="flex pb-9">Reviewed On: {review.date}</span>
+            <span className="sr-only"> ( ) {review.rating} out of 5 stars.</span>
             <p>{review.comment}</p>
           </div>
         ))}

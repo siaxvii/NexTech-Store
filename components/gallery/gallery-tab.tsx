@@ -13,7 +13,8 @@ const GalleryTab: React.FC<GalleryTabProps> = ({
 }) => {
   return ( 
     <Tab
-      className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white"
+      className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white" 
+      aria-hidden="true"
     >
       {({ selected }) => (
         <div>
@@ -21,7 +22,7 @@ const GalleryTab: React.FC<GalleryTabProps> = ({
             <NextImage 
               fill 
               src={image.url} 
-              alt="" 
+              alt=""
               className="object-cover object-center" 
             />
           </span>

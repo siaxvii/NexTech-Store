@@ -3,7 +3,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation";
-
 import { cn } from "@/lib/utils"
 import { Category } from "@/types";
 import { useTheme } from "next-themes";
@@ -26,6 +25,8 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <nav
+      role="navigation:focus"
+      aria-label="Main"
       className="mx-9 flex items-center space-x-2 lg:space-x-6 whitespace-nowrap"
     >
       {routes.map((route) => (
@@ -33,8 +34,8 @@ const MainNav: React.FC<MainNavProps> = ({
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm transition-colors font-medium hover:text-gray-400',
-            theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+            'text-sm transition-colors font-bold hover:text-gray-400',
+            theme === 'dark' ? 'text-neutral-300' : 'text-gray-500'
           )}
         >
           <div className="relative"> {/* Wrap in a div to position the line */}

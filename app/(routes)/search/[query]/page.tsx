@@ -41,11 +41,12 @@ const SearchPage: React.FC<SearchPageProps> = async ({
 
   return (
       <Container>
+        <span className="sr-only" tabIndex={0}> {products.length === 1 ? `${products.length} search result` : `${products.length} search results`} for {decodedQuery} </span>
         <div className="px-4 sm:px-6 lg:px-8 pb-24 pt-10">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters colors={colors} />
             <div className="pt-10 hidden lg:block">
-              <h3 className="text-lg font-semibold"> Sort Price </h3>
+              <h3 className="text-lg font-semibold" tabIndex={0} aria-label="Filters. Sort Price"> Sort Price </h3>
               <hr className="my-4" />
               <Sort
                 sortByOptions={[
@@ -53,7 +54,7 @@ const SearchPage: React.FC<SearchPageProps> = async ({
                   { label: 'Highest to Lowest', value: 'desc' },
                 ]}
               />
-              <div className="pt-10">
+              <div className="pt-10" tabIndex={0} aria-label="Color Filters">
                 <Filter 
                   valueKey="colorId" 
                   name="Colors" 

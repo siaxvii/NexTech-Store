@@ -33,22 +33,29 @@ const Info: React.FC<InfoProps> = ({ data, ignoreTheme }) => {
 
   return (
     <div>
-      <h1 className={`text-3xl font-bold ${textColor}`}>{data.name}</h1>
+      <h1 className={`text-3xl font-bold ${textColor}`} tabIndex={0}>{data.name}</h1>
       <div className="mt-3 flex items-end justify-between">
-        <div className={`text-2xl ${textColor}`}>{renderPrice()}</div>
+        <div className={`text-2xl ${textColor}`} tabIndex={0}>
+          <span className='sr-only'> Price </span>
+          {renderPrice()}
+        </div>
       </div>
       <hr className="my-4" />
       <div className="flex flex-col gap-y-6">
-        <div className="flex items-center gap-x-4">
-          <h3 className={`font-semibold ${textColor}`}>Color:</h3>
+        <div className="flex items-center gap-x-4" tabIndex={0}>
+          <h3 className={`font-semibold ${textColor}`} aria-hidden="true">Color:</h3>
           <div
             className="h-6 w-6 rounded-full border border-gray-600"
             style={{ backgroundColor: data?.color?.value }}
           />
+          <span className='sr-only'> Color: {data?.color?.name} </span>
         </div>
         <div className="flex items-start gap-x-4">
-          <h3 className={`font-semibold ${textColor}`}>Description:</h3>
-          <h3 className={textColor}>{data.description}</h3>
+          <h3 className={`font-semibold ${textColor}`}> Description: </h3>
+          <h3 className={textColor} tabIndex={0}>
+            <span className='sr-only'> Description.. </span>
+            {data.description}
+          </h3>
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">

@@ -36,7 +36,9 @@ const ProductPage: React.FC<ProductPageProps> = async ({
           <hr className="my-10" />
           <Reviews />
           <hr className="my-10" />
-          <ProductList title="Related Items" items={suggestedProducts} />
+          <div tabIndex={0} aria-label="Related Items"> 
+            <ProductList title="Related Items" items={suggestedProducts} />
+          </div>
         </div>
       </Container> 
   )
