@@ -5,15 +5,15 @@ Watch Video Demo!: https://youtu.be/KN0ayZHNdVM
 
 NexTech is an e-commerce platform deployed with Vercel and built with Next.js, TypeScript, TailwindCSS, Prisma ORM, and CockroachDB. NexTech aims to create a tech marketplace that is accessible, intuitive, and user-centric.
 
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/dc61472c-68a3-4121-b782-f64d31d464db">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/d339865a-9257-4783-8567-c9559842259a">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/88f9fee4-9033-42bd-b74d-5619ceb82427">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/e31e0bd5-00ac-429a-92b9-b0b430efd7aa">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/12301f24-e018-4279-b6ca-e8ed783d6120">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/98b5dd8a-fa97-44bf-bcc7-c320de9c8363">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/36672071-f0c3-4088-85b6-eb8b38def7fc">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/8416db09-11e1-4998-9ed9-78233ffe32f8">
-<img width="300" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/29e07755-5a40-43b8-8680-5da43a757359">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/dc61472c-68a3-4121-b782-f64d31d464db">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/d339865a-9257-4783-8567-c9559842259a">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/88f9fee4-9033-42bd-b74d-5619ceb82427">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/e31e0bd5-00ac-429a-92b9-b0b430efd7aa">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/12301f24-e018-4279-b6ca-e8ed783d6120">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/98b5dd8a-fa97-44bf-bcc7-c320de9c8363">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/36672071-f0c3-4088-85b6-eb8b38def7fc">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/8416db09-11e1-4998-9ed9-78233ffe32f8">
+<img width="200" alt="image" src="https://github.com/siaxvii/NexTech-Store/assets/91913752/29e07755-5a40-43b8-8680-5da43a757359">
 
 ### 
 
